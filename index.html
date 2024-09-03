@@ -6,6 +6,19 @@
     <title>Rinse - Car Cleaning</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const displayImage = document.getElementById('display-image');
+
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            const newSrc = this.src.replace('150', '600x400'); // Adjust this based on your image sizes
+            displayImage.src = newSrc;
+        });
+    });
+});
+</script>
 <body>
     <header>
         <div class="container">
