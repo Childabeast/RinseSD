@@ -1,3 +1,6 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 /* Basic reset */
 * {
     margin: 0;
@@ -26,6 +29,7 @@ header h1 {
 nav ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 nav ul li {
@@ -69,4 +73,42 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    nav ul {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    section {
+        padding: 1rem 0;
+    }
 }
