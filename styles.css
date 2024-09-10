@@ -74,7 +74,7 @@ nav ul li:last-child a:hover {
     background-color: #218838;
 }
 
-/* Hero Section */
+/* -------- Main Image Section --------- */
 #hero {
     position: relative;
     width: 100%;
@@ -95,6 +95,14 @@ nav ul li:last-child a:hover {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.subtext {
+    font-size: 18px; /* Smaller font size */
+    color: #ccc; /* Lighter text color */
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
 
 .hero-text h2 {
     font-size: 48px;
@@ -117,7 +125,9 @@ nav ul li:last-child a:hover {
     background-color: #218838;
 }
 
-/* Intro Section */
+
+
+/* ---------- Intro Section -------- */
 #intro {
     padding: 40px 20px;
     text-align: center;
@@ -139,7 +149,8 @@ nav ul li:last-child a:hover {
 
 
 
-/* Services Section */
+
+/* ------------ Services Section ------------*/
 #services {
     padding: 60px 20px;
     text-align: center;
@@ -158,11 +169,38 @@ nav ul li:last-child a:hover {
     gap: 30px;
 }
 
+/* Style for the info icon */
+.info-icon {
+    position: absolute; /* Position absolutely within the service-item */
+    top: 10px; /* Adjust top position */
+    left: 10px; /* Adjust left position */
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 50%; /* Make the icon round */
+    width: 20px; /* Width of the icon */
+    height: 20px; /* Height of the icon */
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    font-size: 16px; /* Font size for the icon text */
+    font-weight: bold; /* Bold text */
+    z-index: 1; /* Ensure it appears above other content */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
 .service-item {
+    position: relative; /* Ensure the service-item is the positioning context for the icon */
     background-color: #333;
     border-radius: 8px;
     overflow: hidden;
     width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 .service-image {
@@ -170,6 +208,7 @@ nav ul li:last-child a:hover {
     height: 200px;
     object-fit: cover;
 }
+
 
 .service-info {
     padding: 20px;
@@ -204,17 +243,47 @@ nav ul li:last-child a:hover {
 }
 
 
+/* Description box styling */
+.service-description-box {
+    position: absolute; /* Position the box absolutely */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 90%;
+    margin-top: 20px;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+
+.service-description-box h3 {
+    font-size: 18px; /* Smaller font size for the title */
+    margin: 0;
+}
+
+.service-description-box p {
+    font-size: 14px; /* Smaller font size for the description */
+    margin: 5px 0;
+}
 
 
 
 
 
-/* Gallery Section */
+
+
+
+
+
+/* ------------ Gallery Section --------------*/
 .gallery {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    padding-bottom: "30px";
+
 }
 
 .gallery-item {
@@ -242,4 +311,5 @@ body.scroll-down header {
 .section {
     padding: 60px 20px;
     text-align: center;
+    padding-top: 80px;
 }
