@@ -1,16 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const displayImage = document.getElementById('display-image');
+    // Open modal
+    const bookingModal = document.getElementById('bookingModal');
+    const openModalBtn = document.getElementById('openBookingModal');
+    const closeModalBtn = document.getElementById('closeModal');
 
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            const newSrc = this.src.replace('150', '600x400'); // Adjust based on actual image sizes
-            displayImage.src = newSrc;
-        });
+    openModalBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent link from navigating away
+        bookingModal.style.display = 'block';
     });
 
+    closeModalBtn.addEventListener('click', function() {
+        bookingModal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside content
+    window.addEventListener('click', function(event) {
+        if (event.target === bookingModal) {
+            bookingModal.style.display = 'none';
+        }
+    });
+
+    // Flatpickr calendar setup
     flatpickr("#calendar", {
         dateFormat: "Y-m-d",
         minDate: "today",
+    });
+
+    // Handle service image click
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
     });
 });
