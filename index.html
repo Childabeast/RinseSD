@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RinseSD | Premier Car Detailing</title>
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Setmore Script -->
+    <script type="text/javascript" src="https://my.setmore.com/webapp/js/src/others/setmore_iframe.js"></script>
 </head>
 <body>
     <header>
@@ -17,7 +24,7 @@
                 <ul>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#booking" id="book-now-btn">Book Now</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,19 +35,16 @@
         <div class="hero-text">
             <h2>San Diego Mobile Car Detailing</h2>
             <p class="subtext">We drive to you, anywhere in San Diego</p>
-            <a href="#booking" class="cta-button">Book Now</a>
+            <a href="#booking" class="cta-button" id="book-now-btn">Book Now</a>
         </div>
     </section>
-    
 
     <section id="intro">
         <h2>Premium Affordable Car Detailing</h2>
-        <p>Experience elite mobile detailing near me with the trusted professionals at Fresh Layer Mobile Detailing in San Diego.</p>
-        <p>Specializing in a wide range of vehicle detailing services, we transform your vehicle’s appearance and feel.</p>
-        <p>From in-depth interior cleaning to sophisticated exterior care, our car detailing near me services are designed to bring unparalleled convenience and excellence directly to your location anywhere in San Diego.</p>
+        <p>Experience elite mobile detailing with the trusted professionals at Fresh Layer Mobile Detailing in San Diego.</p>
+        <p>We specialize in a wide range of vehicle detailing services to transform your vehicle’s appearance and feel.</p>
+        <p>From in-depth interior cleaning to sophisticated exterior care, our services are designed to bring unparalleled convenience and excellence to your location anywhere in San Diego.</p>
     </section>
-
-
 
     <section id="services" class="section">
         <h2>Services</h2>
@@ -51,7 +55,7 @@
                 <div class="service-info">
                     <h3>Wash & Wax</h3>
                     <p class="price">$49.99</p>
-                    <a href="#booking" class="book-now-btn">Book Now</a>
+                    <a href="#booking" class="book-now-btn" id="book-now-btn">Book Now</a>
                 </div>
             </div>
             <div class="service-item">
@@ -60,7 +64,7 @@
                 <div class="service-info">
                     <h3>Interior Detailing</h3>
                     <p class="price">$79.99</p>
-                    <a href="#booking" class="book-now-btn">Book Now</a>
+                    <a href="#booking" class="book-now-btn" id="book-now-btn">Book Now</a>
                 </div>
             </div>
             <div class="service-item">
@@ -69,13 +73,11 @@
                 <div class="service-info">
                     <h3>The Works</h3>
                     <p class="price">$149.99</p>
-                    <a href="#booking" class="book-now-btn">Book Now</a>
+                    <a href="#booking" class="book-now-btn" id="book-now-btn">Book Now</a>
                 </div>
             </div>
         </div>
     </section>
-    
-
 
     <section id="gallery" class="section">
         <h2>Gallery</h2>
@@ -88,11 +90,20 @@
 
     <section id="contact" class="section">
         <h2>Contact Us</h2>
-        <p>Email: contact@rinsesd.com</p>
-        <p>Phone: (123) 456-7890</p>
+        <p>Email: <a href="mailto:contact@rinsesd.com">contact@rinsesd.com</a></p>
+        <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
     </section>
 
-    <script src="scripts.js"></script>
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="setmore-frame">
+                <!-- Setmore widget will be embedded here -->
+            </div>
+        </div>
+    </div>
 
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
 </body>
 </html>

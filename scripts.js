@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
             box.style.left = '50%'; // Center horizontally
             box.style.transform = 'translateX(-50%)'; // Center horizontally
 
-
             const title = document.createElement('h3');
             title.textContent = serviceName;
             title.style.fontWeight = 'bold';
@@ -81,4 +80,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 return 'Premium detailing service for your vehicle.';
         }
     }
+
+    // Handle 'Book Now' button click to open Setmore in a pop-up
+    const bookNowButton = document.querySelector('#book-now-btn');
+    bookNowButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Show the modal
+        const bookingModal = document.getElementById('booking-modal');
+        bookingModal.style.display = 'block';
+
+        // Open Setmore booking page in the modal
+        const setmoreFrame = document.getElementById('setmore-frame');
+        setmoreFrame.innerHTML = '<iframe src="https://benchris.setmore.com" style="width: 100%; height: 600px; border: none;"></iframe>';
+
+        // Close the modal when clicking the close button
+        const closeButton = document.querySelector('.close-btn');
+        closeButton.addEventListener('click', function() {
+            bookingModal.style.display = 'none';
+            setmoreFrame.innerHTML = ''; // Clear iframe content when closing
+        });
+
+        // Close the modal when clicking outside the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+                setmoreFrame.innerHTML = ''; // Clear iframe content when closing
+            }
+        });
+    });
 });
