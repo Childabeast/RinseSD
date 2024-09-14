@@ -10,6 +10,7 @@ body {
 header {
     position: sticky;
     top: 0;
+    padding: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.7); /* Darker background for readability */
     backdrop-filter: blur(10px);
@@ -30,6 +31,7 @@ header {
 .header-content h1 {
     margin: 0;
     font-size: 24px;
+    margin-left: -160px;
     color: #fff;
     padding-left: 0; /* Keep logo aligned left */
 }
@@ -65,18 +67,91 @@ nav ul li a:hover {
 
 
 /* Green "Book Now" button in the header */
-nav ul li:last-child a {
+.book-now-btn-hdr {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #28a745; /* Green background */
     color: #fff;
     border-radius: 30px;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
-nav ul li:last-child a:hover {
+.book-now-btn-hdr:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+
+
+
+/* -------- Google sign in button -------- */
+.g_id_signin {
+    margin-left: -20px;
+    margin-right: -170px;
+}
+
+
+
+
+
+/* -------- Sign in wit username and password -------- */
+
+#sign-in-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #222; /* Slightly lighter background to distinguish from the header */
+}
+
+#sign-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    width: 100%;
+}
+
+#sign-in-container h2 {
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+#sign-in-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+#sign-in-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#sign-in-container button:hover {
     background-color: #218838;
 }
+
+
+
+
+
+
+
 
 
 

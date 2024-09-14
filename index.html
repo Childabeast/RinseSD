@@ -15,6 +15,40 @@
 
     <!-- Setmore Script -->
     <script type="text/javascript" src="https://my.setmore.com/webapp/js/src/others/setmore_iframe.js"></script>
+
+    <!-- Google Sign in Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+
+    
+
+    <!-- Firebase Integration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+    
+        const firebaseConfig = {
+          apiKey: "AIzaSyC4ezuFVNlMEGNsVB3rVr80Xj0v1b2CZDc",
+          authDomain: "rinsesandiego-1c140.firebaseapp.com",
+          projectId: "rinsesandiego-1c140",
+          storageBucket: "rinsesandiego-1c140.appspot.com",
+          messagingSenderId: "844149246356",
+          appId: "1:844149246356:web:48506cf35212c167a7a781",
+          measurementId: "G-74RVGYFRXY"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const firestore = getFirestore(app);
+    
+        // Export auth and firestore to use in your scripts.js
+        window.auth = auth;
+        window.firestore = firestore;
+    </script>
+    
+
 </head>
 <body>
     <header>
@@ -24,11 +58,42 @@
                 <ul>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#booking" id="book-now-btn">Book Now</a></li>
+                    <li><a href="#booking" id="book-now-btn" class="book-now-btn-hdr">Book Now</a></li>
+                    <li id="g_id_onload"
+                        data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                        data-auto_prompt="false">
+                    </li>
+                    <li>
+                        <div class="g_id_signin"
+                            data-type="standard"
+                            data-size="medium"
+                            data-theme="outline"
+                            data-text="sign_in_with"
+                            data-shape="rectangular"
+                            data-logo_alignment="left">
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
+
+<!---
+< -- Sign In Form Section (ugly ahh)-- >
+<section id="sign-in-section">
+    <div id="sign-in-container">
+        <h2>Sign In</h2>
+        <input type="email" id="email" placeholder="Enter email" />
+        <input type="password" id="password" placeholder="Enter password" />
+        <button id="sign-in-btn">Sign In</button>
+        <button id="sign-up-btn">Sign Up</button>
+    </div>
+</section>
+-->
+
+  
+
 
     <section id="hero">
         <img src="https://github.com/Childabeast/RinseSD/blob/main/images/BackgroundCar.png?raw=true" alt="Car Detailing Hero Image" class="hero-image">

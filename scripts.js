@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle service image click
+    // Existing functionality: Handle service image click
     const services = document.querySelectorAll('.service-item');
     let currentBox = null; // Track currently open description box
 
@@ -7,11 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function(event) {
             event.stopPropagation(); // Prevent event from bubbling up to document
 
-            console.log('Service item clicked'); // Debug log
-
             const serviceName = this.querySelector('h3').textContent;
-            console.log('Service name:', serviceName); // Debug log
-
             const serviceDescription = getServiceDescription(serviceName);
 
             // Remove the old box if it exists
@@ -23,17 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a new box
             const box = document.createElement('div');
             box.classList.add('service-description-box');
-            box.style.backgroundColor = '#333'; // Dark gray background
+            box.style.backgroundColor = '#333'; 
             box.style.color = '#fff';
             box.style.padding = '10px';
             box.style.marginTop = '20px';
             box.style.borderRadius = '8px';
-            box.style.width = '50%'; // Make it more compact
-            box.style.maxWidth = '90%'; // Responsive width
-            box.style.position = 'absolute'; // Absolute positioning
-            box.style.top = `${item.offsetTop + item.offsetHeight + 20}px`; // Position below the clicked service
-            box.style.left = '50%'; // Center horizontally
-            box.style.transform = 'translateX(-50%)'; // Center horizontally
+            box.style.width = '50%'; 
+            box.style.maxWidth = '90%'; 
+            box.style.position = 'absolute'; 
+            box.style.top = `${item.offsetTop + item.offsetHeight + 20}px`; 
+            box.style.left = '50%'; 
+            box.style.transform = 'translateX(-50%)'; 
 
             const title = document.createElement('h3');
             title.textContent = serviceName;
@@ -109,4 +105,109 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Google Sign-In initialization
+    window.onload = function () {
+        google.accounts.id.initialize({
+            client_id: "YOUR_GOOGLE_CLIENT_ID",  // Replace with your actual client ID
+            callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+            document.querySelector(".g_id_signin"),
+            { theme: "outline", size: "medium" }  // Customize button appearance
+        );
+    };
+
+    // Handle the Google Sign-In response
+function handleCredentialResponse(response) {
+    const jwtToken = response.credential;
+    console.log("Encoded JWT ID token: " + jwtToken);
+
+    // Send the token to your server for validation and to create a session
+    fetch('/api/auth/google', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: jwtToken })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Save session token or any other user data (such as user ID) to localStorage
+            localStorage.setItem('userSession', data.sessionToken);
+            console.log('User signed in successfully!');
+        } else {
+            console.error('Sign-in failed:', data.message);
+        }
+    })
+    .catch(error => console.error('Error during authentication:', error));
+}
+
+
+document.getElementById('sign-in-btn').addEventListener('click', function() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    
+    // Sign in with Firebase
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in successfully
+        var user = userCredential.user;
+        alert("Signed in as: " + user.email);
+        // Redirect to your home page or dashboard
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Error: " + errorMessage);
+      });
+  });
+  
+  document.getElementById('sign-up-btn').addEventListener('click', function() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    
+    // Sign up with Firebase
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+  
+        // Create user data in Firestore
+        firebase.firestore().collection("users").doc(user.uid).set({
+          email: user.email,
+          createdAt: new Date(), // Store the sign-up date
+          profile: {
+            name: "", // Initialize with empty value, can be updated later
+            address: ""
+          }
+        }).then(() => {
+          console.log("User data saved to Firestore.");
+          alert("Account created and data saved!");
+          // Redirect to your home page or dashboard
+        }).catch((error) => {
+          console.error("Error saving user data: ", error);
+        });
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Error: " + errorMessage);
+      });
+  });
+  
+
+  
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  .then(() => {
+    // Existing sign-in code here
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log("Error with persistence: ", errorMessage);
+  });
+
+
 });
